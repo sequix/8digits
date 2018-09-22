@@ -16,7 +16,7 @@ class Board:
         self.priority = len(self.path) + self.zx + self.zy
 
     def move_up(self):
-        '''返回棋盘向上后的新棋盘'''
+        '''返回棋盘向上后的新棋盘，无法移动返回None'''
         if self.zx + 1 > 2:
             return None
         old_zi = self.zi
@@ -28,7 +28,7 @@ class Board:
         return Board(new_board, new_path)
 
     def move_down(self):
-        '''返回棋盘向下后的新棋盘'''
+        '''返回棋盘向下后的新棋盘，无法移动返回None'''
         if self.zx - 1 < 0:
             return None
         old_zi = self.zi
@@ -40,7 +40,7 @@ class Board:
         return Board(new_board, new_path)
 
     def move_left(self):
-        '''返回棋盘向左后的新棋盘'''
+        '''返回棋盘向左后的新棋盘，无法移动返回None'''
         if self.zy + 1 > 2:
             return None
         old_zi = self.zi
@@ -52,7 +52,7 @@ class Board:
         return Board(new_board, new_path)
 
     def move_right(self):
-        '''返回棋盘向右后的新棋盘'''
+        '''返回棋盘向右后的新棋盘，无法移动返回None'''
         if self.zy - 1 < 0:
             return None
         old_zi = self.zi
