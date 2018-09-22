@@ -63,8 +63,17 @@ class Board:
         new_path = tuple(list(self.path) + ['r'])
         return Board(new_board, new_path)
 
+    def reversed_path(self):
+        '''返回取反的路径'''
+        reversed_movement = {'u':'d', 'd':'u', 'l':'r', 'r':'l'}
+        reversed_path = reversed(self.path)
+        reversed_path = tuple(map(lambda x: reversed_movement[x], reversed_path))
+        return reversed_path
+
     def __eq__(self, other):
+        '''仅比较棋盘，不比较路径'''
         return self.board == other.board
 
     def __hash__(self):
+        '''以全排列中的序号作为hash值'''
         return board2serial[self.board]

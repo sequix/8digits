@@ -1,4 +1,7 @@
 # 8digits
 
+Solve "8 Digits" problem in Python3 with:
 
-Solve "8 Digits" problem with A* in Python3.
+    1. A*
+    2. BFS
+    3. BFS-Preprocess

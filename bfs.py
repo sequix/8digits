@@ -3,12 +3,12 @@
 
 from board import Board
 from reader import Reader
-from queues import PriorityQueue
+from queues import Queue
 
-reader = Reader()
 used = set()
+que = Queue()
+reader = Reader()
 board_goal = Board(range(9))
-que = PriorityQueue(key=lambda board: board.priority)
 
 initial_board = reader.read_board()
 used.add(initial_board)
