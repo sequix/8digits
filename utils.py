@@ -5,7 +5,7 @@
 import itertools
 
 first_board = tuple(range(9))
-serial2board = itertools.permutations(first_board)
+serial2board = list(itertools.permutations(first_board))
 board2serial = {}
 
 for serial, board in enumerate(serial2board):

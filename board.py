@@ -1,19 +1,32 @@
 #!/usr/bin/env python3
 # -*- coding: utf8 -*-
 
-from utils import board2serial
+from collections import Iterable
+from utils import board2serial, serial2board
 
 class Board:
     '''8数码棋盘 (immutable)'''
     def __init__(self, board=None, path=None):
-        self.board = board or (0, 1, 2, 3, 4, 5, 6, 7, 8)
-        self.board = tuple(self.board)
+        self.board = board
         self.path = path or ()
         self.path = tuple(self.path)
         self.zi = self.board.index(0)
         self.zx = self.zi // 3
         self.zy = self.zi % 3
         self.priority = len(self.path) + self.zx + self.zy
+
+    @property
+    def board(self):
+        return serial2board[self._board_serial]
+
+    @board.setter
+    def board(self, value):
+        if isinstance(value, (list, tuple)):
+            self._board_serial = board2serial[tuple(value)]
+        elif isinstance(value, int):
+            self._board_serial = value
+        else:
+            raise ValueError('expected a integer, a list or a tuple')
 
     def move_up(self):
         '''返回棋盘向上后的新棋盘，无法移动返回None'''
